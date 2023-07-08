@@ -15,12 +15,14 @@ for (let fav of favs) (
 for(let i in deleteBtns) (
     deleteBtns[i].addEventListener("click",function(){
         cards[i].remove()
+        total()
     })
 )
 
 for (let plusBtn of plusBtns){
     plusBtn.addEventListener("click",function(){
         plusBtn.nextElementSibling.innerHTML++
+        total()
     })
 }
 
@@ -30,8 +32,17 @@ for (let minusBtn of minusBtns){
         minusBtn.previousElementSibling.innerHTML>0?
         minusBtn.previousElementSibling.innerHTML--:
         minusBtn.previousElementSibling.innerHTML
+        total()
     })
 }
 
+function total (){
+    let qte = Array.from(document.querySelectorAll("qute"))
+    let price = Array.from(document.querySelectorAll(".unitt.price"))
+    let s = 0
+    for (let i=0 ; i< price.length ; i++ ) {
+        s = s + price[i].innerHTML * qte[i].innerHTML
+       }
+       Document.getElementById("total.price").innerHTML = s
 
-function t
+}
